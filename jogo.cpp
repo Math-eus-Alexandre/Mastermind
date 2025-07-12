@@ -92,7 +92,7 @@ int main() {
 				senha_usr_1 = cod_tent % 10;
 				cod_tent /= 10;
 
-				if (senha_usr_1 == senha_usr_2 || senha_usr_1 == senha_usr_3 ||
+				if (senha_usr_1 == senha_usr_2 || senha_usr_1 == senha_usr_3 || // confere se os digitos são diferente entre eles utilazando "ou"/"or"/"||"
 				        senha_usr_1 == senha_usr_4 || senha_usr_2 == senha_usr_3 ||
 				        senha_usr_2 == senha_usr_4 || senha_usr_3 == senha_usr_4) {
 					cout << "\033c";
@@ -100,7 +100,7 @@ int main() {
 					cout << endl << "- Os números precisam ser diferentes entre si." << endl;
 
 				} else if (senha_usr_1 < 1 || senha_usr_1 > 6 || senha_usr_2 < 1 ||
-				           senha_usr_2 > 6 || senha_usr_3 < 1 || senha_usr_3 > 6 ||
+				           senha_usr_2 > 6 || senha_usr_3 < 1 || senha_usr_3 > 6 || // delimita com maior e menor o valor minimo digitado =1 e máximo =6
 				           senha_usr_4 < 1 || senha_usr_4 > 6) {
 					cout << "\033c";
 					cout << endl
@@ -111,17 +111,20 @@ int main() {
 					pos_err = 0;
 					pos_cer = 0;
 
+					//se o usuario acertar o digito da senha na posição certa o contador de posição certa soma +1
 					if (senha_usr_1 == senha_dig_1) pos_cer++;
 					if (senha_usr_2 == senha_dig_2) pos_cer++;
-					if (senha_usr_3 == senha_dig_3) pos_cer++;
+					if (senha_usr_3 == senha_dig_3) pos_cer++; 
 					if (senha_usr_4 == senha_dig_4) pos_cer++;
 
+					//se o usuario acertar a digito da senha na posição errada o contador de posição errada soma +1
 					if (senha_usr_1 == senha_dig_2 || senha_usr_1 == senha_dig_3 || senha_usr_1 == senha_dig_4) pos_err++;
-					if (senha_usr_2 == senha_dig_1 || senha_usr_2 == senha_dig_3 || senha_usr_2 == senha_dig_4) pos_err++;
-					if (senha_usr_3 == senha_dig_1 || senha_usr_3 == senha_dig_2 || senha_usr_3 == senha_dig_4) pos_err++;
+					if (senha_usr_2 == senha_dig_1 || senha_usr_2 == senha_dig_3 || senha_usr_2 == senha_dig_4) pos_err++; 
+					if (senha_usr_3 == senha_dig_1 || senha_usr_3 == senha_dig_2 || senha_usr_3 == senha_dig_4) pos_err++; 
 					if (senha_usr_4 == senha_dig_1 || senha_usr_4 == senha_dig_2 || senha_usr_4 == senha_dig_3) pos_err++;
 
-					if (senha_usr_1 != senha_dig_1 || senha_usr_2 != senha_dig_2 ||
+					// se o usuario erra a senha a tentaiva diminui para ele tentar novamente até acabarem
+					if (senha_usr_1 != senha_dig_1 || senha_usr_2 != senha_dig_2 || 
 						senha_usr_3 != senha_dig_3 || senha_usr_4 != senha_dig_4) {
 						tent--;
 					}
@@ -129,13 +132,14 @@ int main() {
 				}
 			} while ((senha_usr_1 != senha_dig_1 || senha_usr_2 != senha_dig_2 ||
 				senha_usr_3 != senha_dig_3 || senha_usr_4 != senha_dig_4) && tent > 0);
+				 //repetição para continar as tentatiivas enquanto elas não chegarem a 0
 
 				if (tent == 0) {
 					cout << "\033c";
 					cout << endl
-					     << "Que pena, suas tentativas acabaram! Você perdeu! "
+					     << "Que pena, suas tentativas acabaram! Você perdeu! " // mensagem de derrota após as tentativas acabarem
 					     << endl
-					     << endl;
+					     << endl;   
 					cin.ignore();
 					cout << "Aperte ENTER para voltar ao Menu Principal...";
 					cin.ignore();
@@ -143,7 +147,7 @@ int main() {
 				} else {
 					cout << "\033c";
 					cout << endl << "Parabéns! Você acertou todos os números!" << endl;
-					cout << endl << "Você venceu!" << endl;
+					cout << endl << "Você venceu!" << endl; // mensagem de vitoria após acertar a senha
 					cin.ignore();
 					cout << "Aperte ENTER para voltar ao Menu Principal...";
 					cin.ignore();
@@ -153,6 +157,8 @@ int main() {
 
 		case 2: /*Sobre*/
 
+			// Menu do case 2 que leva a opção "sobre"
+
 			cout << "\033c";
 			cout << endl;
 			cout << "+==============================+" << endl;
@@ -160,7 +166,7 @@ int main() {
 			cout << "+==============================+" << endl;
 			cout << "|       Desenvolvedores:       |" << endl;
 			cout << "| - Matheus Alexandre Santos   |" << endl;
-			cout << "| - Luiz Miguel Silvino        |" << endl;
+			cout << "| - Luiz Miguel Silvino        |" << endl;  
 			cout << "| - Luiz Borba                 |" << endl;
 			cout << "| - Carlos Henrique Deucher    |" << endl;
 			cout << "|                              |" << endl;
@@ -172,7 +178,7 @@ int main() {
 
 			break;
 		case 3: /*Sair*/
-			continuar = false;
+			continuar = false; 
 			break;
 		}
 
